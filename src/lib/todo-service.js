@@ -15,8 +15,12 @@ class ToDos {
 
 
   createToDo=({title, body})=>{
-    console.log(title, body)
     return this.todo.post("/todos", {title, body})
+    .then(data=>data.data)
+}
+
+deleteToDo=(id)=>{
+    return this.todo.delete(`/todos/${id}`)
     .then(data=>data.data)
 }
 

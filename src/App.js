@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AddToDo } from "./components/AddToDo";
 import toDoService from "./lib/todo-service";
+import { ToDoCard } from "./components/ToDoCard";
 
 
 const App = () => {
@@ -11,7 +12,10 @@ const App = () => {
     toDoService.getAllToDos().then((data) => setToDoList(data));
   }, [toDoList]);
 
-
+  const removeTask=(id)=>{
+    console.log(id)
+    setToDoList(toDoList.filter(toDo=> toDo._id !== id))
+  }
 
   return (
     <div className="App ">
@@ -20,10 +24,7 @@ const App = () => {
       </header>
       <div className="row">
         <div className="col-4">
-            {toDoList.map(entry=> {return <div className="card shadow p-4 m-5">
-            <h4>{entry.title}</h4>
-            <p>{entry.body}</p>
-            </div>
+            {toDoList.map(entry=> {return <ToDoCard key={entry._id} entry={entry} removeTask={removeTask} ></ToDoCard>
             })}
         </div>
         <div className="col-4">
