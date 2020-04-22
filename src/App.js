@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div className="App d-flex flex-column justify-content-center">
-      <header className="App-header px-5 pt-5 pb-3 m-0 text-center bg-info">
+      <header className="App-header px-5 pt-5 pb-3 mx-0 mt-0 mb-2 text-center bg-info shadow">
         <h1 className="my-5 display-3 text-light">Welcome to your to-do list</h1>
       </header>
       <div className="row d-flex justify-content-center">
