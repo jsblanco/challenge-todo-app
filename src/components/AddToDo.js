@@ -1,21 +1,16 @@
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import toDoService from "../lib/todo-service";
 
-export const AddToDo = () => {
+export const AddToDo = (props) => {
   const [toDo, setToDo] = useState({
     title: "",
     body: "",
   });
 
+  let {toDoList, setToDoList}= props
+
   const handleChange = event => {
-      console.log(event)
       const {name, value} = event.target
-      console.log(name, value)
     setToDo({
       ...toDo,
       [name]: value,
@@ -25,18 +20,23 @@ export const AddToDo = () => {
   const submitTask = (e) => {
     e.preventDefault();
     const { title, body } = toDo;
+    setToDoList([
+        ...toDoList,
+        {[title]: body}
+    ])
     console.log(title, body)
     toDoService.createToDo({title, body});
   };
 
   return (
-    <div>
+    <div className="card shadow d-flex flex-column m-5 col-4 p-5">
     <h4>Add a task</h4>
       <form action="submit" onSubmit={submitTask}>
         <label htmlFor="title">Task name:</label>
         <input
           type="text"
           name="title"
+          className="w-100"
           placeholder="Name your task"
           onChange={handleChange}
           value={toDo.title}
@@ -45,11 +45,12 @@ export const AddToDo = () => {
         <input
           type="text"
           name="body"
+          className="w-100"
           placeholder="What does your task consist of?"
           onChange={handleChange}
           value={toDo.body}
         />
-        <button>Add a task</button>
+        <button className="btn-success w-100 mt-4">Add a task</button>
       </form>
     </div>
   );
