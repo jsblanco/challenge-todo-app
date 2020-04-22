@@ -24,6 +24,10 @@ export const AddToDo = (props) => {
         ...toDoList,
         {[title]: body}
     ])
+    setToDo({
+        title: "",
+        body: "",
+      })
     toDoService.createToDo({title, body});
   };
 
