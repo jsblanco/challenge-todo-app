@@ -19,9 +19,7 @@ export const TaskEditor = (props) => {
   const editTask = e => {
       e.preventDefault()
       const { title, body } = toDo;
-      setToDoList([
-          ...toDoList,
-          {[title]: body}
+      setToDoList(["updating..."
       ])
       setShowTaskEditor(false)
       toDoService.updateToDo({entry, title, body});

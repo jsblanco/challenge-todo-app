@@ -32,10 +32,9 @@ export const AddToDo = (props) => {
   };
 
   return (
-    <div className="card shadow d-flex flex-column m-5 p-5 ">
-    <h4>Add a task</h4>
+    <div className="card shadow d-flex flex-column mt-2 p-5 ">
       <form action="submit" onSubmit={submitTask}>
-        <label htmlFor="title">Task name:</label>
+        <label htmlFor="title" className=" mb-0">Task name:</label>
         <input
           type="text"
           name="title"
@@ -44,16 +43,16 @@ export const AddToDo = (props) => {
           onChange={handleChange}
           value={toDo.title}
         />
-        <label htmlFor="body">Task body:</label>
-        <input
+        <label htmlFor="body" className=" mt-3 mb-0">Task body:</label>
+        <textarea
           type="text"
           name="body"
           className="w-100"
           placeholder="What does your task consist of?"
           onChange={handleChange}
           value={toDo.body}
-        />
-        <button className="btn-success w-100 mt-4">Add a task</button>
+        ></textarea>
+        <button className="btn btn-success w-100 mt-4">Add a task</button>
       </form>
     </div>
   );

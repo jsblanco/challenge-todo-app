@@ -19,7 +19,7 @@ export const ToDoCard = (props) => {
   };
 
   return (
-    <div className="card shadow p-4 m-5">
+    <div className="card shadow col-5 mx-2 p-4 my-2">
       {showTaskEditor == true ? (
         <TaskEditor
           entry={entry}

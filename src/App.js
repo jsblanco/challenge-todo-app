@@ -17,12 +17,15 @@ const App = () => {
   };
 
   return (
-    <div className="App ">
-      <header className="App-header">
-        <h1>Welcome to your to-do list</h1>
+    <div className="App d-flex flex-column justify-content-center">
+      <header className="App-header px-5 pt-5 pb-3 m-0 text-center bg-info">
+        <h1 className="my-5 display-3 text-light">Welcome to your to-do list</h1>
       </header>
-      <div className="row">
-        <div className="col-4">
+      <div className="row d-flex justify-content-center">
+        <div className="col-6">
+        <h3 className="w-100 text-center font-weight-bold mt-4 mb-2">Pending task list</h3>
+        <div className="row d-flex justify-content-center">
+
           {toDoList.map((entry) => {
             return (
               <ToDoCard
@@ -35,7 +38,9 @@ const App = () => {
             );
           })}
         </div>
-        <div className="col-4">
+        </div>
+        <div className="col-3">
+        <h3 className="w-100 text-center font-weight-bold mt-4 mb-2">Add a new task</h3>
           <AddToDo toDoList={toDoList} setToDoList={setToDoList} />
         </div>
       </div>
