@@ -6,8 +6,9 @@ import { TaskInformation } from "./TaskInformation";
 export const ToDoCard = (props) => {
   let { entry, removeTask, toDoList, setToDoList } = props;
   let [showTaskEditor, setShowTaskEditor] = useState(false);
+  let [task, setTask] = useState(entry);
 
-  useEffect(() => {}, [showTaskEditor]);
+  useEffect(() => {}, [showTaskEditor, entry]);
 
   const deleteTask = () => {
     toDoService.deleteToDo(entry._id);
@@ -22,13 +23,12 @@ export const ToDoCard = (props) => {
     <div className="card shadow col-5 mx-2 p-4 my-2">
       {showTaskEditor == true ? (
         <TaskEditor
-          entry={entry}
-          toDoList={toDoList}
-          setToDoList={setToDoList}
+          entry={task}
+          setTask={setTask}
           setShowTaskEditor={setShowTaskEditor}
         />
       ) : (
-        <TaskInformation entry={entry} />
+        <TaskInformation entry={task} />
       )}
 
       {showTaskEditor ? (

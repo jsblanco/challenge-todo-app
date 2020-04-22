@@ -2,7 +2,7 @@ import React, { Fragment,useState, useEffect } from "react";
 import toDoService from "../lib/todo-service";
 
 export const TaskEditor = (props) => {
-  let { entry, toDoList, setToDoList, setShowTaskEditor} = props;
+  let { entry, setTask, setShowTaskEditor} = props;
   const [toDo, setToDo] = useState({
     title: entry.title,
     body: entry.body,
@@ -19,8 +19,7 @@ export const TaskEditor = (props) => {
   const editTask = e => {
       e.preventDefault()
       const { title, body } = toDo;
-      setToDoList(["updating..."
-      ])
+      setTask(toDo)
       setShowTaskEditor(false)
       toDoService.updateToDo({entry, title, body});
   };
