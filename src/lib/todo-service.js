@@ -24,6 +24,12 @@ deleteToDo=(id)=>{
     .then(data=>data.data)
 }
 
+updateToDo=({entry, title, body})=>{
+    return this.todo.put(`/todos/${entry._id}`, {title, body})
+    .then(data=>data.data)
+}
+
+
 }
 
 const toDoRequests = new ToDos()

@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment,useState, useEffect } from "react";
 import toDoService from "../lib/todo-service";
 
-export const AddToDo = (props) => {
+export const TaskEditor = (props) => {
+  let { entry, toDoList, setToDoList, setShowTaskEditor} = props;
   const [toDo, setToDo] = useState({
-    title: "",
-    body: "",
+    title: entry.title,
+    body: entry.body,
   });
 
-  let {toDoList, setToDoList}= props
-
-  const handleChange = event => {
-      const {name, value} = event.target
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setToDo({
       ...toDo,
       [name]: value,
     });
   };
 
-  const submitTask = (e) => {
-    e.preventDefault();
-    const { title, body } = toDo;
-    setToDoList([
-        ...toDoList,
-        {[title]: body}
-    ])
-    toDoService.createToDo({title, body});
+  const editTask = e => {
+      e.preventDefault()
+      const { title, body } = toDo;
+      setToDoList([
+          ...toDoList,
+          {[title]: body}
+      ])
+      setShowTaskEditor(false)
+      toDoService.updateToDo({entry, title, body});
   };
 
   return (
-    <div className="card shadow d-flex flex-column m-5 p-5 ">
-    <h4>Add a task</h4>
-      <form action="submit" onSubmit={submitTask}>
+    <Fragment>
+      <form action="submit" onSubmit={editTask}>
         <label htmlFor="title">Task name:</label>
         <input
           type="text"
@@ -49,8 +48,8 @@ export const AddToDo = (props) => {
           onChange={handleChange}
           value={toDo.body}
         />
-        <button className="btn-success w-100 mt-4">Add a task</button>
+      <button className="btn btn-warning w-100">Update task</button>
       </form>
-    </div>
+    </Fragment>
   );
 };
