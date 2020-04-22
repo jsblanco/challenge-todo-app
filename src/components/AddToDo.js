@@ -29,7 +29,7 @@ export const AddToDo = (props) => {
   };
 
   return (
-    <div className="card shadow d-flex flex-column m-5 col-4 p-5">
+    <div className="card shadow d-flex flex-column m-5 p-5 ">
     <h4>Add a task</h4>
       <form action="submit" onSubmit={submitTask}>
         <label htmlFor="title">Task name:</label>

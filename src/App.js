@@ -26,7 +26,9 @@ const App = () => {
             </div>
             })}
         </div>
+        <div className="col-4">
         <AddToDo toDoList={toDoList} setToDoList={setToDoList} />
+        </div>
       </div>
     </div>
   );
